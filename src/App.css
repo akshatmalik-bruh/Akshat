@@ -6,9 +6,21 @@
   flex-direction: column;
   justify-content: center;
   overflow: hidden;
+  background: transparent; /* Let stable-bg show through */
+  transition: color 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Stable fixed background to prevent dynamic viewport/address-bar scaling issues on mobile */
+.stable-bg {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh; /* Match dynamic viewport height exactly */
+  z-index: -1;
+  pointer-events: none;
   background: var(--bg-gradient);
-  background-attachment: fixed; /* Keep background gradient stable on scroll/resize */
-  transition: background 0.8s cubic-bezier(0.25, 1, 0.5, 1), color 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: background 0.8s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 /* Animated fluid gradient orbs — only visible in dark mode */

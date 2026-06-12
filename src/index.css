@@ -137,16 +137,25 @@
   padding: 0;
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
 body {
   background: var(--bg-gradient);
   color: var(--color-text-main);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
-  height: 100vh;
-  width: 100vw;
+  overflow: hidden; /* Lock scrolling completely on Hero page */
   transition: background 0.8s cubic-bezier(0.25, 1, 0.5, 1), color 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+body:has(.pageActive) {
+  overflow-y: auto; /* Allow scrolling on mobile/desktop when subpages are active */
 }
 
 a {

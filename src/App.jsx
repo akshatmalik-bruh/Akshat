@@ -68,6 +68,9 @@ function App() {
 
   return (
     <div className={`appContainer ${theme === 'dark' ? 'dark' : ''} ${activeItem ? 'pageActive' : ''} preset-${activePreset}`}>
+      {/* Stable fixed background to prevent mobile scrolling stretch & resize bugs */}
+      <div className="stable-bg"></div>
+
       {/* Black curtain water preloader */}
       <LoadingScreen />
 
