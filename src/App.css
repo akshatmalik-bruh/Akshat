@@ -187,9 +187,16 @@
 /* Mobile & Tablet Layout Adjustments */
 @media (max-width: 900px) {
   .appContainer {
+    height: 100vh;
+    height: 100dvh; /* Lock height to visible screen area on mobile to prevent scrollbars */
+    overflow: hidden;
+  }
+
+  .pageActive.appContainer {
     height: auto;
-    overflow-y: auto;
-    overflow-x: hidden;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow-y: visible; /* Let scrolling bubble up to body when subpage is active */
   }
   
   .sidebar {
@@ -197,7 +204,7 @@
     left: auto;
     top: auto;
     transform: none;
-    margin: 4rem auto 2rem;
+    margin: 2rem auto 1.5rem; /* Reduced from 4rem auto 2rem to prevent vertical overflow */
     display: flex;
     justify-content: center;
     width: 100%;
@@ -229,7 +236,7 @@
     position: relative;
     right: auto;
     bottom: auto;
-    margin: 2rem auto 4rem;
+    margin: 1.5rem auto 2rem; /* Reduced from 2rem auto 4rem to prevent vertical overflow */
     display: flex;
     justify-content: center;
     width: 100%;
