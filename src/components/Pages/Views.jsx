@@ -6,24 +6,6 @@ import resumePdf from '../../assets/akshat_resume.pdf';
 export function AboutView() {
   return (
     <div className={styles.pageView}>
-      <h2 className={styles.sectionTitle}>BIO / PERSPECTIVE</h2>
-      
-      <p className={styles.paragraph}>
-        I don’t just write code; I design systems that solve developer pain points. As a Computer Science student at BIT Mesra, I focus on building scalable backends, implementing Retrieval-Augmented Generation (RAG) pipelines, and orchestrating complex agentic workflows.
-      </p>
-
-      <div className={styles.quoteBlock}>
-        "I am a Full Stack AI Engineer passionate about designing developer workflows, orchestrating autonomous agent teams, and sharing technical insights through writing."
-      </div>
-
-      <p className={styles.paragraph}>
-        I love creating developer tools that directly solve real-world problems I've faced. This hands-on drive recently led me to create and publish a developer tool npm package (you can <a href="https://www.npmjs.com/package/chat-relay-mcp?activeTab=readme" target="_blank" rel="noopener noreferrer" className={styles.inlineLink}>check out the npm package here ↗</a>), which gathered 400+ downloads within its first few hours.
-      </p>
-
-      <p className={styles.paragraph}>
-        For me, building software is only half the journey; the other half is explaining it. I regularly write technical articles breaking down system architecture and engineering concepts. Checkout my latest projects, and feel free to check out my blogs on my <a href="https://medium.com/@akshatf8lmalik" target="_blank" rel="noopener noreferrer" className={styles.inlineLink}>Medium Blog ↗</a>.
-      </p>
-
       {/* Stats Highlight (Education & Grades) */}
       <div className={styles.aboutStats}>
         <div className={styles.statCard}>
@@ -43,6 +25,24 @@ export function AboutView() {
           <span className={styles.statVal}>95.4% General • MIET Public School</span>
         </div>
       </div>
+
+      <h2 className={styles.sectionTitle}>BIO / PERSPECTIVE</h2>
+      
+      <p className={styles.paragraph}>
+        I don’t just write code; I design systems that solve developer pain points. As a Computer Science student at BIT Mesra, I focus on building scalable backends, implementing Retrieval-Augmented Generation (RAG) pipelines, and orchestrating complex agentic workflows.
+      </p>
+
+      <div className={styles.quoteBlock}>
+        "I am a Full Stack AI Engineer passionate about designing developer workflows, orchestrating autonomous agent teams, and sharing technical insights through writing."
+      </div>
+
+      <p className={styles.paragraph}>
+        I love creating developer tools that directly solve real-world problems I've faced. This hands-on drive recently led me to create and publish a developer tool npm package (you can <a href="https://www.npmjs.com/package/chat-relay-mcp?activeTab=readme" target="_blank" rel="noopener noreferrer" className={styles.inlineLink}>check out the npm package here ↗</a>), which gathered 400+ downloads within its first few hours.
+      </p>
+
+      <p className={styles.paragraph}>
+        For me, building software is only half the journey; the other half is explaining it. I regularly write technical articles breaking down system architecture and engineering concepts. Checkout my latest projects, and feel free to check out my blogs on my <a href="https://medium.com/@akshatf8lmalik" target="_blank" rel="noopener noreferrer" className={styles.inlineLink}>Medium Blog ↗</a>.
+      </p>
     </div>
   );
 }
@@ -109,16 +109,16 @@ export function WorkView() {
       github: 'https://github.com/akshatmalik-bruh/Multi-Agent-Research'
     },
     {
-      title: 'RESUME ANALYZER',
-      desc: 'Built an AI-powered platform that identifies skill gaps, generates interview questions, and creates ATS-optimized resumes tailored to job descriptions.',
-      tech: 'ReactJS • ExpressJS • MongoDB • JWT • Bcrypt • Puppeteer • Zod',
-      github: 'https://github.com/akshatmalik-bruh/resumeAnalyser'
-    },
-    {
       title: 'CODESANDBOX',
       desc: 'Implemented a web-based code execution platform using worker processes to orchestrate Docker containers, enabling secure, isolated, and scalable execution environments.',
       tech: 'Docker • ExpressJS • Redis • BullMQ • MongoDB • Zod • ReactJS',
       github: 'https://github.com/akshatmalik-bruh/CodeSandbox'
+    },
+    {
+      title: 'RESUME ANALYZER',
+      desc: 'Built an AI-powered platform that identifies skill gaps, generates interview questions, and creates ATS-optimized resumes tailored to job descriptions.',
+      tech: 'ReactJS • ExpressJS • MongoDB • JWT • Bcrypt • Puppeteer • Zod',
+      github: 'https://github.com/akshatmalik-bruh/resumeAnalyser'
     }
   ];
 

@@ -118,6 +118,10 @@
   transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+.pageActive .sidebar {
+  top: 2.2rem; /* Position navbar higher up on active subpages */
+}
+
 /* Content Area (Centers hero normally, aligns content left on subpages) */
 .content {
   flex: 1;
@@ -132,9 +136,9 @@
 .pageActive .content {
   justify-content: center;
   align-items: flex-start;
-  padding-left: 28rem;
-  padding-top: 5.5rem;
-  padding-right: 28rem; /* Symmetrical centering on ultra-wide viewports */
+  padding-left: 24rem;
+  padding-top: 5.5rem; /* Increased to leave a clean gap below the navbar */
+  padding-right: 24rem; /* Symmetrical centering on ultra-wide viewports */
 }
 
 /* Footer / Socials (Bottom Right) */
@@ -148,7 +152,9 @@
 /* Desktop-wide responsiveness */
 @media (max-width: 1700px) {
   .pageActive .content {
-    padding-right: 6rem; /* Shift content right on medium desktops */
+    padding-left: 20rem;
+    padding-right: 20rem; /* Symmetrical centering */
+    padding-top: 5.5rem;
   }
 }
 
@@ -156,13 +162,25 @@
   .sidebar {
     left: 4rem;
   }
+  .pageActive .sidebar {
+    top: 2.2rem;
+  }
   .footer {
     right: 4rem;
   }
   .pageActive .content {
-    padding-left: 24rem;
-    padding-right: 4rem;
+    padding-left: 16rem;
+    padding-right: 16rem; /* Symmetrical centering */
+    padding-top: 5.5rem;
     justify-content: center;
+  }
+}
+
+@media (max-width: 1200px) {
+  .pageActive .content {
+    padding-left: 12rem;
+    padding-right: 12rem; /* Symmetrical centering */
+    padding-top: 5.5rem;
   }
 }
 
@@ -183,6 +201,11 @@
     display: flex;
     justify-content: center;
     width: 100%;
+    transition: margin 0.5s ease;
+  }
+
+  .pageActive .sidebar {
+    margin: 0.75rem auto 0.5rem; /* Even more compact top/bottom margin when page is active on mobile */
   }
 
   .content {
@@ -195,7 +218,7 @@
 
   .pageActive .content {
     padding-left: 1.5rem;
-    padding-top: 1rem;
+    padding-top: 2.5rem; /* Increased to leave a clean gap below the navbar on mobile */
     padding-right: 1.5rem;
     align-items: center;
     justify-content: center;
