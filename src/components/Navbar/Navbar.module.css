@@ -1,0 +1,152 @@
+.navbar {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: auto;
+  user-select: none;
+}
+
+.navList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.navItem {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Inactive Link - Notion Monospace Style */
+.navLink {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  position: relative;
+  padding: 0.1rem 0;
+  transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Active Link - Large GTA Display Style */
+.activeLink {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-gta);
+  font-size: 3.5rem;
+  font-weight: normal;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  color: var(--color-text-main);
+  text-decoration: none;
+  position: relative;
+  padding: 0.4rem 0;
+  transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-accent);
+  border-radius: 50%;
+  position: absolute;
+  left: -16px;
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.text {
+  position: relative;
+}
+
+/* Hover line reveal for inactive items only */
+.navLink:hover {
+  color: var(--color-text-main);
+}
+
+.navLink .text::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 1.5px;
+  bottom: -2px;
+  left: 0;
+  background-color: var(--color-text-main);
+  transition: var(--transition-smooth);
+}
+
+.navLink:hover .text::after {
+  width: 100%;
+}
+
+/* Back Button Arrow at top */
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--color-text-muted);
+  margin-bottom: 1.8rem;
+  cursor: pointer;
+  opacity: 0;
+  animation: arrowFadeIn 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation-delay: 1.3s; /* Fades in after page displays */
+  transition: all 0.2s ease;
+  user-select: none;
+  width: fit-content;
+  border: none;
+  background: none;
+}
+
+.backButton:hover {
+  color: var(--color-text-main);
+  transform: translateX(-4px);
+}
+
+@keyframes arrowFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Responsive adjustment for small screens */
+@media (max-width: 900px) {
+  .navbar {
+    align-items: center;
+    width: 100%;
+  }
+
+  .navList {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    justify-content: center;
+  }
+  
+  .dot {
+    display: none;
+  }
+
+  .activeLink {
+    font-size: 2.2rem;
+    padding: 0.2rem 0;
+  }
+  
+  .backButton {
+    margin-bottom: 1rem;
+  }
+}

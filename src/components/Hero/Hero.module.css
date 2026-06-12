@@ -1,0 +1,150 @@
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  padding: 2rem;
+  position: relative;
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nameWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.gtaFont {
+  font-family: var(--font-gta);
+  font-size: clamp(5rem, 13vw, 13rem);
+  line-height: 0.88;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  user-select: none;
+  transition: color 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+              text-shadow 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+              -webkit-text-stroke 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.firstName {
+  color: var(--color-bg);
+  -webkit-text-stroke: 2.5px var(--color-text-main);
+  text-shadow: 
+    -1.5px -1.5px 0 var(--color-text-main),  
+     1.5px -1.5px 0 var(--color-text-main),
+    -1.5px  1.5px 0 var(--color-text-main),
+     1.5px  1.5px 0 var(--color-text-main);
+  z-index: 1;
+}
+
+/* Subtle interactive effect: fill in outlined text on hover */
+.nameWrapper:hover .firstName {
+  color: var(--color-text-main);
+  -webkit-text-stroke: 0px transparent;
+  text-shadow: none;
+  transform: translateY(-3px);
+}
+
+.lastName {
+  color: var(--color-text-main);
+  z-index: 2;
+  margin-top: -4.2vw; /* Y-axis overlap - tightened for bigger font */
+  text-shadow: 0 0 0 transparent;
+  transition: color 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+              text-shadow 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+              -webkit-text-stroke 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.nameWrapper:hover .lastName {
+  color: var(--color-bg);
+  -webkit-text-stroke: 2.5px var(--color-text-main);
+  text-shadow: 
+    -1.5px -1.5px 0 var(--color-text-main),  
+     1.5px -1.5px 0 var(--color-text-main),
+    -1.5px  1.5px 0 var(--color-text-main),
+     1.5px  1.5px 0 var(--color-text-main);
+  transform: translateY(3px) scale(1.01);
+}
+
+/* Tagline - Centered slightly above the name headers */
+.tagline {
+  margin-bottom: 2rem;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  color: var(--color-text-muted);
+  user-select: none;
+  text-transform: uppercase;
+  transition: color 0.4s ease, letter-spacing 0.4s ease;
+}
+
+.nameWrapper:hover .tagline {
+  color: var(--color-accent);
+  letter-spacing: 0.3em;
+}
+
+/* Responsive Overrides */
+@media (max-width: 900px) {
+  .hero {
+    min-height: 45vh;
+  }
+  .lastName {
+    margin-top: -3.6vw; /* Adjusted for mobile */
+  }
+  .tagline {
+    margin-bottom: 1rem;
+    font-size: 0.72rem;
+    line-height: 1.4;
+  }
+}
+
+
+
+/* Dark mode: AKSHAT is filled (solid) + MALIK is outlined (transparent) */
+:global(.dark) .firstName {
+  color: var(--color-text-main);
+  -webkit-text-stroke: 0px transparent;
+  text-shadow: 0 0 30px rgba(237, 232, 223, 0.12);
+}
+
+:global(.dark) .lastName {
+  color: var(--color-bg);
+  -webkit-text-stroke: 2.5px var(--color-text-main);
+  text-shadow:
+    -1.5px -1.5px 0 var(--color-text-main),
+     1.5px -1.5px 0 var(--color-text-main),
+    -1.5px  1.5px 0 var(--color-text-main),
+     1.5px  1.5px 0 var(--color-text-main),
+    0 0 40px rgba(255, 122, 82, 0.1);
+}
+
+/* Dark mode hover: AKSHAT becomes outlined (transparent) + MALIK fills with solid accent */
+:global(.dark) .nameWrapper:hover .firstName {
+  color: var(--color-bg);
+  -webkit-text-stroke: 2.5px var(--color-text-main);
+  text-shadow:
+    -1.5px -1.5px 0 var(--color-text-main),
+     1.5px -1.5px 0 var(--color-text-main),
+    -1.5px  1.5px 0 var(--color-text-main),
+     1.5px  1.5px 0 var(--color-text-main),
+    0 0 40px rgba(237, 232, 223, 0.12);
+}
+
+:global(.dark) .nameWrapper:hover .lastName {
+  color: var(--color-text-main);
+  -webkit-text-stroke: 0px transparent;
+  text-shadow: 0 0 60px rgba(255, 122, 82, 0.2), 0 0 20px rgba(237, 232, 223, 0.08);
+}

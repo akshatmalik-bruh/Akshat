@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+
+@font-face {
+  font-family: 'Pricedown';
+  src: url('./assets/fonts/Pricedown-Black.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --color-bg: #FAF6F0;               /* Soft warm creme */
+  --color-text-main: #1A1A1A;        /* Deep charcoal */
+  --color-text-muted: #484848;       /* Medium dark gray (improved contrast) */
+  --color-text-light: #707070;       /* Muted dark gray (improved contrast for titles) */
+  --color-accent: #D4522A;           /* Burnt sienna — more premium than coral */
+  --color-accent-subtle: rgba(212, 82, 42, 0.1);
+  --color-border: #E4DED6;           /* Warm border */
+  --color-card-bg: rgba(255, 255, 255, 0.45);
+  --color-skill-card-bg: rgba(0, 0, 0, 0.03);
+
+  --bg-gradient: var(--color-bg);
+
+  --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-mono: 'Space Mono', monospace;
+  --font-gta: 'Pricedown', sans-serif;
+
+  --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --transition-fast: all 0.15s ease;
+}
+
+/* Dark Theme Overrides — Rich deep blue-black with warm cream text */
+.dark {
+  --color-bg: #0D0F14;               /* Deep blue-black — more depth than pure black */
+  --color-text-main: #EDE8DF;        /* Warm cream — easier on eyes than pure white */
+  --color-text-muted: #A3A8B9;       /* Bright cool gray (improved readability) */
+  --color-text-light: #7C849E;       /* Clear light blue-gray (improved subheading visibility) */
+  --color-accent: #FF7A52;           /* Vibrant orange-coral — pops on dark bg */
+  --color-accent-subtle: rgba(255, 122, 82, 0.18);
+  --color-border: #1E2130;           /* Deep navy border — adds dimension */
+  --color-card-bg: rgba(30, 33, 48, 0.45);
+  --color-skill-card-bg: rgba(30, 33, 48, 0.25);
+  
+  --bg-gradient: radial-gradient(circle at 10% 20%, #151A24 0%, #0D0F14 100%);
+}
+
+/* --- THEME PRESETS --- */
+
+/* Preset 1: MAINA (Sage / Emerald) */
+.preset-maina {
+  --color-bg: #F4F7F5;
+  --color-text-main: #1C2E24;
+  --color-text-muted: #4F6456;
+  --color-text-light: #546E5E;        /* Darker sage for better heading contrast */
+  --color-accent: #2E8B57;
+  --color-accent-subtle: rgba(46, 139, 87, 0.1);
+  --color-border: #DFECE4;
+  --color-card-bg: rgba(255, 255, 255, 0.6);
+  --color-skill-card-bg: rgba(0, 0, 0, 0.02);
+  
+  --bg-gradient: var(--color-bg);
+}
+.dark.preset-maina {
+  --color-bg: #0A110D;
+  --color-text-main: #E2ECE6;
+  --color-text-muted: #7A9384;
+  --color-text-light: #9ABBA6;        /* Bright sage for highly visible dark headings */
+  --color-accent: #3EC388;
+  --color-accent-subtle: rgba(62, 195, 136, 0.18);
+  --color-border: #15241C;
+  --color-card-bg: rgba(30, 33, 48, 0.6);
+  --color-skill-card-bg: rgba(30, 33, 48, 0.3);
+
+  --bg-gradient: radial-gradient(circle at 20% 30%, #0E1A14 0%, #0A110D 100%);
+}
+
+/* Preset 2: ROSHNI (Lilac / Cyber Violet) */
+.preset-roshni {
+  --color-bg: #F8F5FA;
+  --color-text-main: #241433;
+  --color-text-muted: #5D4A70;
+  --color-text-light: #67517B;        /* Darker purple for better heading contrast */
+  --color-accent: #7C3AED;
+  --color-accent-subtle: rgba(124, 58, 237, 0.1);
+  --color-border: #EFE6F7;
+  --color-card-bg: rgba(255, 255, 255, 0.6);
+  --color-skill-card-bg: rgba(0, 0, 0, 0.02);
+  
+  --bg-gradient: var(--color-bg);
+}
+.dark.preset-roshni {
+  --color-bg: #0B0813;
+  --color-text-main: #ECE6F3;
+  --color-text-muted: #8E7DA1;
+  --color-text-light: #A297B7;        /* Bright lavender for highly visible dark headings */
+  --color-accent: #A78BFA;
+  --color-accent-subtle: rgba(167, 139, 250, 0.18);
+  --color-border: #1E1530;
+  --color-card-bg: rgba(30, 33, 48, 0.6);
+  --color-skill-card-bg: rgba(30, 33, 48, 0.3);
+
+  --bg-gradient: radial-gradient(circle at 20% 30%, #141022 0%, #0B0813 100%);
+}
+
+/* Preset 3: TOFA (Sand / Volcanic Amber) */
+.preset-tofa {
+  --color-bg: #FCF8F5;
+  --color-text-main: #331A10;
+  --color-text-muted: #755243;
+  --color-text-light: #7D5B4A;        /* Darker brown for better heading contrast */
+  --color-accent: #C84B22;
+  --color-accent-subtle: rgba(200, 75, 34, 0.1);
+  --color-border: #F3E6DF;
+  --color-card-bg: rgba(255, 255, 255, 0.6);
+  --color-skill-card-bg: rgba(0, 0, 0, 0.02);
+  
+  --bg-gradient: var(--color-bg);
+}
+.dark.preset-tofa {
+  --color-bg: #110A07;
+  --color-text-main: #F3ECE8;
+  --color-text-muted: #A88F83;
+  --color-text-light: #C0A79B;        /* Bright sand for highly visible dark headings */
+  --color-accent: #F97316;
+  --color-accent-subtle: rgba(249, 115, 22, 0.18);
+  --color-border: #241712;
+  --color-card-bg: rgba(30, 33, 48, 0.6);
+  --color-skill-card-bg: rgba(30, 33, 48, 0.3);
+
+  --bg-gradient: radial-gradient(circle at 20% 30%, #1A110D 0%, #110A07 100%);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg-gradient);
+  color: var(--color-text-main);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  height: 100vh;
+  width: 100vw;
+  transition: background 0.8s cubic-bezier(0.25, 1, 0.5, 1), color 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* Custom scrollbar for premium feel */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-light);
+}

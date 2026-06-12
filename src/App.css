@@ -1,0 +1,214 @@
+.appContainer {
+  position: relative;
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--bg-gradient);
+  transition: background 0.8s cubic-bezier(0.25, 1, 0.5, 1), color 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Animated fluid gradient orbs — only visible in dark mode */
+.dark.appContainer::before {
+  content: '';
+  position: fixed;
+  inset: -20%;
+  width: 140%;
+  height: 140%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  border-radius: 50%;
+  filter: blur(80px);
+  animation: none;
+}
+
+/* Dark base (no preset) - warm coral orb */
+.dark.appContainer::before {
+  background: radial-gradient(ellipse at 30% 40%, rgba(255, 122, 82, 0.12) 0%, transparent 65%),
+              radial-gradient(ellipse at 70% 60%, rgba(30, 33, 48, 0.6) 0%, transparent 55%);
+  opacity: 1;
+  animation: fluidOrb 14s ease-in-out infinite alternate;
+}
+
+/* ROSHNI — violet orbs */
+.dark.appContainer.preset-roshni::before {
+  background: radial-gradient(ellipse at 25% 35%, rgba(167, 139, 250, 0.14) 0%, transparent 55%),
+              radial-gradient(ellipse at 75% 65%, rgba(124, 58, 237, 0.07) 0%, transparent 50%);
+  opacity: 1;
+  animation: fluidOrbShift 16s ease-in-out infinite alternate;
+}
+
+/* MAINA — emerald orbs */
+.dark.appContainer.preset-maina::before {
+  background: radial-gradient(ellipse at 20% 40%, rgba(62, 195, 136, 0.12) 0%, transparent 55%),
+              radial-gradient(ellipse at 80% 55%, rgba(46, 139, 87, 0.07) 0%, transparent 50%);
+  opacity: 1;
+  animation: fluidOrbRotate 18s ease-in-out infinite alternate;
+}
+
+/* TOFA — amber orbs */
+.dark.appContainer.preset-tofa::before {
+  background: radial-gradient(ellipse at 30% 30%, rgba(249, 115, 22, 0.12) 0%, transparent 55%),
+              radial-gradient(ellipse at 70% 70%, rgba(200, 75, 34, 0.07) 0%, transparent 50%);
+  opacity: 1;
+  animation: fluidOrbDrift 20s ease-in-out infinite alternate;
+}
+
+@keyframes fluidOrb {
+  0%   { transform: translate(0%, 0%) scale(1); }
+  33%  { transform: translate(6%, -4%) scale(1.05); }
+  66%  { transform: translate(-4%, 6%) scale(0.97); }
+  100% { transform: translate(4%, 4%) scale(1.03); }
+}
+
+@keyframes fluidOrbShift {
+  0%   { transform: translate(0%, 0%) scale(1); }
+  25%  { transform: translate(-5%, 5%) scale(1.06); }
+  50%  { transform: translate(7%, -3%) scale(0.96); }
+  75%  { transform: translate(-3%, -5%) scale(1.04); }
+  100% { transform: translate(5%, 3%) scale(1.02); }
+}
+
+@keyframes fluidOrbRotate {
+  0%   { transform: translate(0%, 0%) scale(1) rotate(0deg); }
+  40%  { transform: translate(5%, -6%) scale(1.07) rotate(3deg); }
+  80%  { transform: translate(-6%, 4%) scale(0.95) rotate(-2deg); }
+  100% { transform: translate(3%, 5%) scale(1.04) rotate(1deg); }
+}
+
+@keyframes fluidOrbDrift {
+  0%   { transform: translate(0%, 0%) scale(1); }
+  30%  { transform: translate(8%, -5%) scale(1.05); }
+  60%  { transform: translate(-5%, 7%) scale(0.96); }
+  100% { transform: translate(4%, -3%) scale(1.02); }
+}
+
+/* Subtle static dot grid overlay */
+.appContainer::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.04;
+  background-image: radial-gradient(var(--color-text-main) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.dark.appContainer::after {
+  opacity: 0.025;
+}
+
+.pageActive {
+  overflow-y: auto;
+}
+
+/* Sidebar Navigation (Left side, fixed top-left) */
+.sidebar {
+  position: fixed;
+  left: 6rem;
+  top: 5.5rem;
+  z-index: 50;
+  transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Content Area (Centers hero normally, aligns content left on subpages) */
+.content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Subpage Content Alignment */
+.pageActive .content {
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 28rem;
+  padding-top: 5.5rem;
+  padding-right: 28rem; /* Symmetrical centering on ultra-wide viewports */
+}
+
+/* Footer / Socials (Bottom Right) */
+.footer {
+  position: fixed;
+  right: 6rem;
+  bottom: 4rem;
+  z-index: 50;
+}
+
+/* Desktop-wide responsiveness */
+@media (max-width: 1700px) {
+  .pageActive .content {
+    padding-right: 6rem; /* Shift content right on medium desktops */
+  }
+}
+
+@media (max-width: 1400px) {
+  .sidebar {
+    left: 4rem;
+  }
+  .footer {
+    right: 4rem;
+  }
+  .pageActive .content {
+    padding-left: 24rem;
+    padding-right: 4rem;
+    justify-content: center;
+  }
+}
+
+/* Mobile & Tablet Layout Adjustments */
+@media (max-width: 900px) {
+  .appContainer {
+    height: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  
+  .sidebar {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    margin: 4rem auto 2rem;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .content {
+    flex: unset;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .pageActive .content {
+    padding-left: 1.5rem;
+    padding-top: 1rem;
+    padding-right: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .footer {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    margin: 2rem auto 4rem;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+}

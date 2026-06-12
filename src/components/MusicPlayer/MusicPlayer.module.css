@@ -1,0 +1,359 @@
+.playerContainer {
+  position: fixed;
+  right: 6rem;
+  top: 5.5rem;
+  z-index: 50;
+  width: 240px;
+  background-color: var(--color-bg);
+  border: 1.5px solid var(--color-border);
+  border-radius: 4px;
+  padding: 1rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+  font-family: var(--font-mono);
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.playerContainer.dark {
+  --color-bg: #0D0F14;
+  --color-text-main: #EDE8DF;
+  --color-text-muted: #8A8FA0;
+  --color-text-light: #525870;
+  --color-accent: #FF7A52;
+  --color-accent-subtle: rgba(255, 122, 82, 0.18);
+  --color-border: #1E2130;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.45);
+  background-color: #0D0F14;
+  border-color: #1E2130;
+}
+
+.collapsed {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: visible;
+}
+
+/* Collapsed Icon Mode */
+.miniToggle {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  position: relative;
+}
+
+.miniToggle:hover {
+  color: var(--color-text-main);
+}
+
+.spinningDisc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.spinning {
+  animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.pulseContainer {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 8px;
+  height: 8px;
+}
+
+.pulse {
+  display: block;
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-accent);
+  border-radius: 50%;
+  animation: pulseGlow 1.5s ease-out infinite;
+}
+
+@keyframes pulseGlow {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+/* Expanded Layout */
+.expandedPlayer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.playerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 0.4rem;
+}
+
+.playerTitle {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  font-weight: 700;
+  color: var(--color-text-muted);
+}
+
+.headerControls {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.collapseBtn {
+  font-size: 0.75rem;
+  color: var(--color-text-light);
+  line-height: 1;
+  padding: 0.1rem;
+  transition: var(--transition-fast);
+}
+
+.collapseBtn:hover {
+  color: var(--color-text-main);
+  transform: scale(1.1);
+}
+
+/* Equalizer Visualizer */
+.eqContainer {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 12px;
+  width: 14px;
+}
+
+.eqBar {
+  width: 2px;
+  height: 3px;
+  background-color: var(--color-accent);
+  transition: height 0.3s ease;
+}
+
+.animateBar1 { animation: eqWave 0.8s ease-in-out infinite alternate; }
+.animateBar2 { animation: eqWave 1.1s ease-in-out infinite alternate; animation-delay: 0.15s; }
+.animateBar3 { animation: eqWave 0.9s ease-in-out infinite alternate; animation-delay: 0.3s; }
+.animateBar4 { animation: eqWave 0.7s ease-in-out infinite alternate; animation-delay: 0.05s; }
+
+@keyframes eqWave {
+  0% { height: 2px; }
+  100% { height: 12px; }
+}
+
+/* Track Details */
+.trackInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.trackTitle {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.trackArtist {
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Progress Slider */
+.progressContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.progressBar {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 3px;
+  background: var(--color-border);
+  outline: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.progressBar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.progressBar::-webkit-slider-thumb:hover {
+  transform: scale(1.3);
+}
+
+.timeLabel {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.65rem;
+  color: var(--color-text-light);
+}
+
+/* Controls Panel */
+.controlsRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.2rem;
+}
+
+/* Volume Slider inside Row */
+.volumeWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  position: relative;
+}
+
+.volumeBtn {
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-fast);
+}
+
+.volumeBtn:hover {
+  color: var(--color-text-main);
+}
+
+.volumeSlider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 0px;
+  opacity: 0;
+  height: 3px;
+  background: var(--color-border);
+  outline: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: width 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.2s ease;
+}
+
+/* Expand Volume Slider on Hover of wrapper */
+.volumeWrapper:hover .volumeSlider,
+.volumeSlider:focus {
+  width: 50px;
+  opacity: 1;
+}
+
+.volumeSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-text-muted);
+  cursor: pointer;
+}
+
+.volumeSlider::-webkit-slider-thumb:hover {
+  background: var(--color-accent);
+}
+
+/* Playback Control Buttons */
+.playbackButtons {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.controlBtn {
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-fast);
+}
+
+.controlBtn:hover {
+  color: var(--color-text-main);
+  transform: scale(1.05);
+}
+
+.playBtn {
+  color: var(--color-text-main);
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-accent-subtle);
+  transition: var(--transition-smooth);
+}
+
+.playBtn:hover {
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+  border-color: var(--color-accent);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1400px) {
+  .playerContainer {
+    right: 4rem;
+  }
+}
+
+/* On mobile/tablet screen */
+@media (max-width: 900px) {
+  .playerContainer {
+    position: fixed;
+    left: 1.5rem;
+    bottom: 1.5rem;
+    right: auto;
+    top: auto;
+    z-index: 99;
+  }
+}
