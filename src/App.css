@@ -7,6 +7,7 @@
   justify-content: center;
   overflow: hidden;
   background: var(--bg-gradient);
+  background-attachment: fixed; /* Keep background gradient stable on scroll/resize */
   transition: background 0.8s cubic-bezier(0.25, 1, 0.5, 1), color 0.8s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
@@ -106,6 +107,7 @@
 }
 
 .pageActive {
+  justify-content: flex-start; /* Prevent vertical centering of content on active pages */
   overflow-y: auto;
 }
 
